@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunil Kumar Nayak | Portfolio</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-light: #cbd5e1;
+            --accent: #0ea5e9;
+            --accent-hover: #0284c7;
+        }
+
+        /* ===== GLOBAL STYLES ===== */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--text-main) !important;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+        }
+        .navbar-brand span {
+            color: var(--accent);
+        }
+        .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+            margin-left: 15px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent) !important;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            /* Fallback dark gradient background */
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding-top: 80px;
+            overflow: hidden;
+        }
+
+        /* Video Background Logic */
+        .video-background-wrapper {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            opacity: 0.5; 
+            mix-blend-mode: screen; 
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .typing-text {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            height: 35px;
+            margin-bottom: 2.5rem;
+        }
+        
+        /* Profile Image Styles */
+        .profile-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-img {
+            width: 320px;
+            height: 320px;
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.4);
+            background-color: var(--bg-card); 
+            display: block;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); box-shadow: 0 20px 40px rgba(14, 165, 233, 0.6); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background-color: var(--accent);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .btn-custom:hover {
+            background-color: var(--accent-hover);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
+        }
+        .btn-outline-custom {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: transparent;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .btn-outline-custom:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ===== EXPERIENCE & CARDS ===== */
+        .bg-darker { background-color: #0b1120; z-index: 5; position: relative;}
+        
+        .experience-card, .project-card, .skill-box, .contact-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+        
+        .experience-card {
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden; 
+        }
+        .experience-card:hover { transform: translateX(10px); }
+        
+        .experience-logo {
+            position: absolute;
+            top: 50%;
+            right: 30px; 
+            transform: translateY(-50%);
+            width: 180px; 
+            opacity: 1; 
+            z-index: 1;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        
+        .experience-card-content {
+            position: relative;
+            z-index: 2;
+            padding-right: 210px; 
+        }
+        .experience-card p, .experience-card ul {
+            color: var(--text-light) !important; 
+        }
+
+        /* ===== SKILLS & PROJECTS ===== */
+        .skill-box {
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            height: 100%;
+        }
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+        .skill-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+        .skill-list { list-style: none; padding: 0; color: var(--text-muted); font-size: 0.95rem; }
+        .skill-list li { margin-bottom: 8px; }
+
+        .project-card {
+            border-radius: 15px;
+            padding: 25px;
+            height: 100%;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+        .project-title { font-size: 1.25rem; font-weight: 600; color: #fff; }
+        .badge-tech {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent);
+            font-weight: 400;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            display: inline-block;
+        }
+        .project-desc { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; } 
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .contact-icon {
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            margin-right: 20px;
+            flex-shrink: 0; 
+        }
+        .contact-text h5 { margin: 0 0 5px 0; font-size: 1rem; color: #fff; }
+        .contact-text p, .contact-text a { margin: 0; color: var(--text-light); font-size: 0.95rem; text-decoration: none; word-break: break-all; }
+        .contact-text a:hover { color: var(--accent); }
+
+        /* ===== SCROLL ANIMATION ===== */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ===== AUDIO TOGGLE BUTTON ===== */
+        .audio-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5);
+            transition: all 0.3s ease;
+        }
+        .audio-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-hover);
+        }
+
+        /* ===== MOBILE RESPONSIVE DESIGN ===== */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 3rem; }
+            .profile-img { width: 280px; height: 280px; margin-top: 40px; }
+            .hero { text-align: center; }
+            .hero .d-flex { justify-content: center; }
+        }
+        
+        @media (max-width: 768px) {
+            section { padding: 60px 0; }
+            .section-title { font-size: 2rem; margin-bottom: 2rem; }
+            
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-title { font-size: 2.3rem; }
+            .typing-text { font-size: 1.1rem; margin-bottom: 2rem; }
+            .profile-img { width: 230px; height: 230px; margin-top: 20px; }
+            
+            .experience-card { padding: 20px; }
+            .experience-card h4 { font-size: 1.2rem; margin-bottom: 10px; }
+            .experience-card ul { padding-left: 15px; }
+            
+            .experience-card-content { padding-right: 0; } 
+            .experience-logo {
+                position: relative; 
+                top: auto;
+                right: auto;
+                transform: none;
+                width: 140px;
+                margin-bottom: 20px;
+                display: block;
+            }
+            
+            .btn-custom, .btn-outline-custom { padding: 10px 20px; font-size: 0.9rem; }
+            
+            .audio-toggle { bottom: 20px; right: 20px; width: 45px; height: 45px; }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+
+    <!-- Audio Element -->
+    <audio id="bg-audio" src="image/audio.mp3" preload="auto"></audio>
+
+    <!-- Floating Audio Control Button -->
+    <div class="audio-toggle" id="audioToggle" title="Play/Pause Music">
+        <i class="fas fa-volume-mute" id="audioIcon"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Sunil<span>.</span></a>
+            <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center text-lg-start mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        
+        <!-- Video Background Container (Local Path Restored) -->
+        <div class="video-background-wrapper">
+            <video autoplay loop muted playsinline class="video-background">
+                <!-- Compressed video path -->
+                <source src="image/back.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Area -->
+                <div class="col-lg-7 reveal active order-2 order-lg-1 mt-4 mt-lg-0">
+                    <p class="hero-subtitle">Hello, I'm</p>
+                    <h1 class="hero-title">Sunil Kumar Nayak</h1>
+                    <div class="typing-text" id="typewriter"></div>
+                    <div class="mt-2">
+                        <a href="#projects" class="btn-custom me-2">View Projects</a>
+                        <a href="#contact" class="btn-outline-custom">Contact Me</a>
+                    </div>
+                </div>
+                
+                <!-- Profile Image Area -->
+                <div class="col-lg-5 text-center reveal active order-1 order-lg-2">
+                    <div class="profile-wrapper">
+                        <img src="image/Img.jpeg" alt="Sunil Kumar Nayak" class="profile-img">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-darker reveal">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <h3 class="mb-3">Full-Stack Java Developer</h3>
+                    <p style="color: var(--text-light); line-height: 1.8;">
+                        I am a passionate Full-Stack Developer with expertise in building scalable, secure, and high-performance applications. With hands-on experience in <strong>Java Spring Boot, Microservices, AWS Cloud, and DevOps</strong>, I take end-to-end ownership across development, testing, and deployment.
+                    </p>
+                    <p style="color: var(--text-light); line-height: 1.8;">
+                        Currently working at <strong>Goldman Sachs</strong> via Coforge, I specialize in the Investment Banking domain, developing risk and security platforms, optimizing databases, and deploying containerized applications.
+                    </p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <i class="fas fa-graduation-cap text-info me-2"></i> <strong>Education:</strong> MCA (NIIS)
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <i class="fas fa-certificate text-info me-2"></i> <strong>Certifications:</strong> AWS Cloud, IoT 4.0, MIS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-box">
+                        <i class="fab fa-java skill-icon"></i>
+                        <h4>Backend</h4>
+                        <ul class="skill-list mt-3">
+                            <li>Java 8/17</li>
+                            <li>Spring Boot, MVC, Data JPA</li>
+                            <li>Microservices Architecture</li>
+                            <li>REST APIs, Kafka</li>
+                            <li>Spring Security, OAuth2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-box">
+                        <i class="fab fa-aws skill-icon"></i>
+                        <h4>Cloud (AWS)</h4>
+                        <ul class="skill-list mt-3">
+                            <li>EC2, S3, RDS, VPC</li>
+                            <li>IAM, CloudWatch, SNS</li>
+                            <li>Route53, EBS, Glacier</li>
+                            <li>AWS EKS (Kubernetes)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-box">
+                        <i class="fas fa-server skill-icon"></i>
+                        <h4>DevOps & Tools</h4>
+                        <ul class="skill-list mt-3">
+                            <li>Docker & Kubernetes</li>
+                            <li>Jenkins CI/CD Pipelines</li>
+                            <li>HashiCorp Vault</li>
+                            <li>Git, GitLab, Bitbucket</li>
+                            <li>JUnit, Mockito, SonarQube</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-box">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h4>Database & UI</h4>
+                        <ul class="skill-list mt-3">
+                            <li>MySQL, Oracle, MongoDB</li>
+                            <li>Redis Cache, DynamoDB</li>
+                            <li>HTML, CSS, Bootstrap</li>
+                            <li>Angular & Vue JS Basics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="bg-darker reveal">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="experience-card">
+                        
+                        <img src="image/logo.png" alt="GS Logo" class="experience-logo">
+
+                        <div class="experience-card-content">
+                            <div class="d-flex justify-content-between align-items-start align-items-sm-center mb-3 flex-column flex-sm-row">
+                                <h4 class="mb-2 mb-sm-0 text-white">Senior Engineer (Java Developer)</h4>
+                                <span class="badge bg-primary px-3 py-2">04/2023 - Present</span>
+                            </div>
+                            <h6 class="text-info mb-3">Coforge Limited (Client: Goldman Sachs)</h6>
+                            <p style="font-size: 0.95rem; line-height: 1.6;">Currently engaged at Goldman Sachs, responsible for designing, developing microservices and enterprise-level solutions for the Investment Banking domain.</p>
+                            <ul style="font-size: 0.95rem; line-height: 1.6; padding-left: 20px;">
+                                <li>Developed Deal Management platform processing 10K+ requests/day with latency <200ms.</li>
+                                <li>Built 8+ microservices utilizing Eureka, API Gateway, Circuit Breaker, improving modularity.</li>
+                                <li>Optimized database load by 40% using Redis caching and query tuning.</li>
+                                <li>Automated CI/CD workflows using Jenkins and containerized apps via Docker/K8s.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="row g-4">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <h3 class="project-title">IBD Financial Solutions</h3>
+                        <div class="mb-3">
+                            <span class="badge badge-tech">Spring Boot</span>
+                            <span class="badge badge-tech">Microservices</span>
+                            <span class="badge badge-tech">AWS</span>
+                        </div>
+                        <p class="project-desc">Goldman Sachs in-house Risk & Security platform. Designed REST APIs secured with OAuth2/JWT. Provisioned AWS infrastructure and deployed applications on Kubernetes (Blue-Green deployment).</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <h3 class="project-title">Financing Solution (IBD)</h3>
+                        <div class="mb-3">
+                            <span class="badge badge-tech">Vault</span>
+                            <span class="badge badge-tech">Jenkins CI/CD</span>
+                            <span class="badge badge-tech">FluentBit</span>
+                        </div>
+                        <p class="project-desc">Provisioned HashiCorp Vault via Conduit for secret management. Configured FluentBit ingestion for centralized logging. Created declarative Jenkins pipelines optimizing end-to-end build workflows.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <h3 class="project-title">Health Insurance Platform</h3>
+                        <div class="mb-3">
+                            <span class="badge badge-tech">Spring Core</span>
+                            <span class="badge badge-tech">REST API</span>
+                            <span class="badge badge-tech">Hibernate/JPA</span>
+                        </div>
+                        <p class="project-desc">Freelance project for a US client. Built a unified online platform for citizens to apply for health plans. Handled backend logic, Data JPA mapping, and exception handling for a stable application lifecycle.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-darker reveal">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="contact-text">
+                                    <h5>Email</h5>
+                                    <a href="mailto:sunilkumar.skn03@gmail.com">sunilkumar.skn03@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                                <div class="contact-text">
+                                    <h5>Phone</h5>
+                                    <p>+91 9348726002</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div class="contact-text">
+                                    <h5>Location</h5>
+                                    <p>Bengaluru, Karnataka, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="contact-item">
+                                <div class="contact-icon"><i class="fab fa-github"></i></div>
+                                <div class="contact-text">
+                                    <h5>GitHub</h5>
+                                    <a href="https://github.com/SunilKumarNayak02" target="_blank">github.com/SunilKumarNayak02</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center" style="background-color: rgba(15,23,42,1); border-top: 1px solid rgba(255,255,255,0.05);">
+        <p class="mb-0" style="color: var(--text-muted); font-size: 0.9rem;">
+            &copy; 2024 Sunil Kumar Nayak. Built with Custom UI & Bootstrap 5.
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // --- AUDIO PLAYER LOGIC ---
+        const bgAudio = document.getElementById('bg-audio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        let hasPlayed = false;
+
+        function playAudioOnce() {
+            if (!hasPlayed) {
+                bgAudio.play().then(() => {
+                    hasPlayed = true;
+                    audioIcon.classList.remove('fa-volume-mute');
+                    audioIcon.classList.add('fa-volume-up');
+                    
+                    window.removeEventListener('scroll', playAudioOnce);
+                    document.removeEventListener('click', playAudioOnce);
+                }).catch(err => {
+                    console.log("Waiting for user interaction to play audio...");
+                });
+            }
+        }
+
+        window.addEventListener('scroll', playAudioOnce);
+        document.addEventListener('click', playAudioOnce);
+
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            if (bgAudio.paused) {
+                bgAudio.play();
+                audioIcon.classList.remove('fa-volume-mute');
+                audioIcon.classList.add('fa-volume-up');
+                hasPlayed = true;
+            } else {
+                bgAudio.pause();
+                audioIcon.classList.remove('fa-volume-up');
+                audioIcon.classList.add('fa-volume-mute');
+            }
+        });
+
+        bgAudio.addEventListener('ended', () => {
+            audioIcon.classList.remove('fa-volume-up');
+            audioIcon.classList.add('fa-volume-mute');
+        });
+
+        // --- EXISTING LOGIC ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuToggle = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => { if (menuToggle.classList.contains('show')) { bsCollapse.toggle() } })
+        });
+
+        // Typing Effect Logic
+        const textArray = ["Java Backend Developer.", "Spring Boot Expert.", "AWS Cloud Enthusiast.", "DevOps Engineer."];
+        let textIndex = 0;
+        let charIndex = 0;
+        const typeTarget = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < textArray[textIndex].length) {
+                typeTarget.innerHTML += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typeTarget.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                textIndex++;
+                if (textIndex >= textArray.length) textIndex = 0;
+                setTimeout(type, 500);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(type, 1000);
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); 
+    </script>
+</body>
+</html>
